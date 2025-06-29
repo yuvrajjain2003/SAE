@@ -1,21 +1,24 @@
+// src/app/products/[...slug]/page.tsx
 import { getAllProducts, getProductBySlug } from "@/lib/products";
 import Image from "next/image";
 import ReactMarkdown from "react-markdown";
 
-interface Props {
-  params: { slug: string[] };
-}
-
+/* ---- 1.  Static paths ---- */
 export async function generateStaticParams() {
   return getAllProducts().map((p) => ({ slug: p.slug.split("/") }));
 }
 
-export default async function ProductDetail({ params: rawParams }: Props) {
-  // Next has now “awaited” the proxy and params is plain data
-  const { slug } = await rawParams;
-  const slugPath = slug.join("/");          // "abrasives/cut14x2-5"
-  const product  = getProductBySlug(slugPath);
+/* ---- 2.  Page component with proper typing ---- */
+type ParamsPromise = Promise<{ slug: string[] }>;
 
+export default async function ProductDetail(
+  { params }: { params?: ParamsPromise }
+) {
+  /* In prod `params` is undefined (because we prerender). In dev it's a proxy-promise. */
+  const { slug } = params ? await params : { slug: [] };
+  const slugPath = slug.join("/");                  // "abrasives/cut14x2-5"
+
+  const product = getProductBySlug(slugPath);
   if (!product) return <p className="p-8">Product not found.</p>;
 
   const { frontMatter, content } = product;
