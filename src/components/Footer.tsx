@@ -44,16 +44,29 @@ export default function Footer() {
         <div className="space-y-2">
           <p className="font-semibold">Get in touch</p>
           <a
-            href="tel:+91XXXXXXXXXX"
+            href="tel:+19843639653"
             className="block hover:text-brand-red underline-offset-4"
           >
-            📞 +91 XX-XXXX-XXXX
+            United States: 📞 +1 (984) 363-9653
           </a>
+          <a
+            href="tel:+919811654647"
+            className="block hover:text-brand-red underline-offset-4"
+          >
+            India: 📞 +91 98116 54647
+          </a>
+                    <a
+            href="tel:+971552901681"
+            className="block hover:text-brand-red underline-offset-4"
+          >
+            Dubai: 📞 +971 55 290 1681
+          </a>
+
           <a
             href="mailto:info@cormenflex.com"
             className="block hover:text-brand-red underline-offset-4"
           >
-            ✉️ info@cormenflex.com
+            ✉️ shreeanurag@gmail.com
           </a>
           <p className="text-brand-light/70">
             © {new Date().getFullYear()} Shree Anurag Enterprises
