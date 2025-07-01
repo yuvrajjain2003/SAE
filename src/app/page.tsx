@@ -132,7 +132,7 @@ export default function Home() {
             />
 
             <Link
-              href="https://goo.gl/maps/XXXXXXXX"   /* optional: direct link */
+              href="https://maps.app.goo.gl/eKe1omaQVU8JVJix5"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-block text-blue-700 underline hover:text-blue-900"
