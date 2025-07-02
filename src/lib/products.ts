@@ -8,11 +8,13 @@ const root = path.join(process.cwd(), "content/products");
 export interface FrontMatter {
   title: string;
   image: string;
+  brand: "cormenflex" | "tailong" | "marksman";
   category: string;
   sku?: string;
-  grit?: string;
   rpm?: number;
+  grit?: string;
 }
+
 
 export interface Product {
   slug: string;

@@ -2,6 +2,7 @@
 import { getAllProducts, getProductBySlug } from "@/lib/products";
 import Image from "next/image";
 import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 
 /* ---- 1.  Static paths ---- */
 export async function generateStaticParams() {
@@ -50,8 +51,11 @@ export default async function ProductDetail(
         </tbody>
       </table>
 
-      <div className="prose">
-        <ReactMarkdown>{content}</ReactMarkdown>
+      {/* Table wrapper so long tables scroll on mobile */}
+      <div className="prose max-w-none lg:prose-lg prose-headings:text-brand-marksman prose-table:w-full overflow-x-auto">
+        <ReactMarkdown remarkPlugins={[remarkGfm]}>
+          {content}
+        </ReactMarkdown>
       </div>
     </article>
   );
